@@ -1,1 +1,0 @@
-# Mobile-shop-management-system

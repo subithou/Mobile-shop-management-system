@@ -1,0 +1,108 @@
+# Mobile-shop-management-system
+
+
+
+All query
+
+--------
+
+
+CREATE DATABASE `project`;//ignore this statement if you already created database named "project"
+
+
+
+CREATE TABLE `employee` (
+  `emp_id` int NOT NULL AUTO_INCREMENT,
+  `emp_name` varchar(45) DEFAULT NULL,
+  `emp_address` varchar(45) DEFAULT NULL,
+  `emp_dob` date DEFAULT NULL,
+  `emp_phn` bigint DEFAULT NULL,
+  `emp_gender` varchar(45) DEFAULT NULL,
+  `emp_category` varchar(45) DEFAULT NULL,
+  `emp_salary` bigint DEFAULT NULL,
+  `emp_date_join` date DEFAULT NULL,
+  PRIMARY KEY (`emp_id`)
+) ;
+
+
+CREATE TABLE `login_tbl` (
+  `user_name` varchar(50) NOT NULL,
+  `usr_password` varchar(50) NOT NULL,
+  `category` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `product` (
+  `p_id` int NOT NULL,
+  `p_name` varchar(50) DEFAULT NULL,
+  `b_name` varchar(45) DEFAULT NULL,
+  `p_quantity` int DEFAULT NULL,
+  `mrp` decimal(10,3) DEFAULT NULL,
+  `p_cat` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`p_id`)
+) ;
+
+
+CREATE TABLE `purchase` (
+  `purchase_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `product_name` varchar(45) NOT NULL,
+  `brand_name` varchar(45) NOT NULL,
+  `product_cat` varchar(45) NOT NULL,
+  `purchasing_price` decimal(10,3) NOT NULL,
+  `product_quantity` int NOT NULL,
+  `p_mrp` decimal(10,3) NOT NULL,
+  `total_price` decimal(10,3) NOT NULL,
+  `purchase_date` date NOT NULL,
+  PRIMARY KEY (`purchase_id`)
+) ;
+
+
+
+CREATE TABLE `tbl_order` (
+  `order_id` bigint NOT NULL AUTO_INCREMENT,
+  `order_no` varchar(50) NOT NULL,
+  `order_date` date NOT NULL,
+  `order_receiver_name` varchar(250) NOT NULL,
+  `order_receiver_address` text NOT NULL,
+  `order_total_before_tax` decimal(10,2) NOT NULL,
+  `order_total_tax1` decimal(10,2) NOT NULL,
+  `order_total_tax2` decimal(10,2) NOT NULL,
+  `order_total_tax3` decimal(10,2) NOT NULL,
+  `order_total_tax` decimal(10,2) NOT NULL,
+  `order_total_after_tax` decimal(10,2) NOT NULL,
+  `order_datetime` date NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ;
+
+
+CREATE TABLE `tbl_order_item` (
+  `order_item_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
+  `item_name` varchar(250) NOT NULL,
+  `order_item_quantity` decimal(10,2) NOT NULL,
+  `order_item_price` decimal(10,2) NOT NULL,
+  `order_item_actual_amount` decimal(10,2) NOT NULL,
+  `order_item_tax1_rate` decimal(10,2) NOT NULL,
+  `order_item_tax1_amount` decimal(10,2) NOT NULL,
+  `order_item_tax2_rate` decimal(10,2) NOT NULL,
+  `order_item_tax2_amount` decimal(10,2) NOT NULL,
+  `order_item_tax3_rate` decimal(10,2) NOT NULL,
+  `order_item_tax3_amount` decimal(10,2) NOT NULL,
+  `order_item_final_amount` decimal(10,2) NOT NULL,
+  `order_date` date DEFAULT NULL,
+  PRIMARY KEY (`order_item_id`),
+  UNIQUE KEY `order_item_id_UNIQUE` (`order_item_id`)
+) ;
+
+
+
+INSERT INTO `project`.`login_tbl`
+(`user_name`,
+`usr_password`,
+`category`)
+VALUES
+("admin123","admin123","Admin"),("user","password","Employee");
+
+
